@@ -50,5 +50,5 @@ test {
     useJUnitPlatform()
 }
 run{
-    mainClass = "baseline.InventoryApp"
+    mainClass = "baseline.InventoryManagementApplication"
 }
