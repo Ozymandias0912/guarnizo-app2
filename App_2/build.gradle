@@ -1,0 +1,54 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.10'
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.7.1'
+}
+
+sourceCompatibility = '16'
+targetCompatibility = '16'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+application {
+    mainModule = 'com.example.app_2'
+    mainClass = 'com.example.app_2.HelloApplication'
+}
+
+javafx {
+    version = '16'
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.web']
+}
+
+dependencies {
+    implementation('org.controlsfx:controlsfx:11.1.0')
+    implementation('com.dlsc.formsfx:formsfx-core:11.4.2')
+    implementation('net.synedra:validatorfx:0.1.13') {
+        exclude(group: 'org.openjfx')
+    }
+    implementation('org.kordamp.ikonli:ikonli-javafx:12.2.0')
+    implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
+    implementation('eu.hansolo:tilesfx:17.0.0')
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api: 5.8.1")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine: 5.8.1")
+}
+
+test {
+    useJUnitPlatform()
+}
+run{
+    mainClass = "baseline.InventoryApp"
+}
