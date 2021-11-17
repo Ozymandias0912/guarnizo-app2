@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="644.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.inventory.HelloController">
+    <children>
+        <MenuBar layoutX="14.0" layoutY="14.0" prefHeight="28.0" prefWidth="622.0">
+            <menus>
+                <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem fx:id="SaveItem" mnemonicParsing="false" text="Save As" />
+                        <MenuItem fx:id="LoadItem" mnemonicParsing="false" text="Load" />
+                    </items>
+                </Menu>
+                <Menu fx:id="viewMenu" mnemonicParsing="false" text="View">
+                    <items>
+                        <MenuItem fx:id="sortAscending" mnemonicParsing="false" text="Sort Ascending" />
+                        <MenuItem fx:id="sortDescending" mnemonicParsing="false" text="Sort Descending" />
+                    </items>
+                </Menu>
+                <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <TableView fx:id="Inventory" layoutX="14.0" layoutY="71.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="548.0" prefWidth="430.0">
+            <columns>
+                <TableColumn fx:id="Serial_Number" prefWidth="144.38400077819824" text="Serial Number" />
+                <TableColumn fx:id="Name" minWidth="0.0" prefWidth="182.783935546875" text="Name" />
+                <TableColumn fx:id="Value" prefWidth="102.14404296875" text="Value" />
+            </columns>
+        </TableView>
+        <TextField fx:id="search" layoutX="456.0" layoutY="71.0" promptText="Search" />
+        <Button fx:id="AddButton" layoutX="539.0" layoutY="237.0" mnemonicParsing="false" onAction="#AddItem" text="Add Item" />
+        <Button fx:id="RemoveButton" layoutX="518.0" layoutY="320.0" mnemonicParsing="false" text="Remove Item" />
+        <Button fx:id="RemoveAllButton" layoutX="495.0" layoutY="368.0" mnemonicParsing="false" text="Remove All Items" />
+        <Button fx:id="EditButton" layoutX="540.0" layoutY="275.0" mnemonicParsing="false" text="Edit Item" />
+        <TextField fx:id="serialNumberInput" layoutX="456.0" layoutY="108.0" promptText="Serial #" />
+        <TextField fx:id="nameInput" layoutX="456.0" layoutY="143.0" promptText="Name" />
+        <TextField fx:id="valueInput" layoutX="456.0" layoutY="180.0" promptText="Value" />
+    </children>
+</AnchorPane>
