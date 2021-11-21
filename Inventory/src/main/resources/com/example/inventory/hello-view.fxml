@@ -15,15 +15,10 @@
             <menus>
                 <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Close" />
-                        <MenuItem fx:id="SaveItem" mnemonicParsing="false" text="Save As" />
-                        <MenuItem fx:id="LoadItem" mnemonicParsing="false" text="Load" />
-                    </items>
-                </Menu>
-                <Menu fx:id="viewMenu" mnemonicParsing="false" text="View">
-                    <items>
-                        <MenuItem fx:id="sortAscending" mnemonicParsing="false" text="Sort Ascending" />
-                        <MenuItem fx:id="sortDescending" mnemonicParsing="false" text="Sort Descending" />
+                        <MenuItem fx:id="SaveItem" mnemonicParsing="false" onAction="#saveFileTSV" text="Save as TSV" />
+                  <MenuItem mnemonicParsing="false" text="Save as HTML" />
+                  <MenuItem mnemonicParsing="false" text="Save as JSON" />
+                        <MenuItem fx:id="LoadItem" mnemonicParsing="false" onAction="#loadFile" text="Load" />
                     </items>
                 </Menu>
                 <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
@@ -42,9 +37,9 @@
         </TableView>
         <TextField fx:id="search" layoutX="456.0" layoutY="71.0" promptText="Search" />
         <Button fx:id="AddButton" layoutX="539.0" layoutY="237.0" mnemonicParsing="false" onAction="#AddItem" text="Add Item" />
-        <Button fx:id="RemoveButton" layoutX="518.0" layoutY="320.0" mnemonicParsing="false" text="Remove Item" />
-        <Button fx:id="RemoveAllButton" layoutX="495.0" layoutY="368.0" mnemonicParsing="false" text="Remove All Items" />
-        <Button fx:id="EditButton" layoutX="540.0" layoutY="275.0" mnemonicParsing="false" text="Edit Item" />
+        <Button fx:id="RemoveButton" layoutX="518.0" layoutY="320.0" mnemonicParsing="false" onAction="#removeItem" text="Remove Item" />
+        <Button fx:id="RemoveAllButton" layoutX="495.0" layoutY="368.0" mnemonicParsing="false" onAction="#removeAllItems" text="Remove All Items" />
+        <Button fx:id="EditButton" layoutX="540.0" layoutY="275.0" mnemonicParsing="false" onAction="#editItem" text="Edit Item" />
         <TextField fx:id="serialNumberInput" layoutX="456.0" layoutY="108.0" promptText="Serial #" />
         <TextField fx:id="nameInput" layoutX="456.0" layoutY="143.0" promptText="Name" />
         <TextField fx:id="valueInput" layoutX="456.0" layoutY="180.0" promptText="Value" />

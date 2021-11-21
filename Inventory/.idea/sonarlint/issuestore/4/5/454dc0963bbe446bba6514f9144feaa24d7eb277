@@ -1,0 +1,8 @@
+
+m
+java:S3776I"RRefactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed.(ÖíË–üÿÿÿÿ
+\
+java:S1126s"AReplace this if-then-else statement by a single return statement.(åê€Âùÿÿÿÿ
+\
+java:S1126~"AReplace this if-then-else statement by a single return statement.(—‹Á®úÿÿÿÿ
+k	java:S117I"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÖíË–üÿÿÿÿ

@@ -12,10 +12,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class HelloController implements Initializable {
 
@@ -79,7 +84,8 @@ public class HelloController implements Initializable {
 
         Item item;
         try {
-        item = new Item(nameInput.getText(), serialNumberInput.getText(), Double.parseDouble(valueInput.getText()));
+        item = new Item(nameInput.getText(), serialNumberInput.getText(),  Double.parseDouble(valueInput.getText()));
+
         } catch (IllegalArgumentException e) {
 
          /**set the alert*/
@@ -110,16 +116,7 @@ public class HelloController implements Initializable {
             alert.show();
             throw serialNumExc1;
         }
-        /**if(item.getBarcode already exists){
-         throw serialNumExc2;
-         //set the alert
-         alert.setAlertType(Alert.AlertType.ERROR);
-         //set the alert's message
-         alert.setContentText(serialNumExc2.getMessage());
-         //show alert
-         alert.show();
-         }*/
-        if( item.getValue() == -1.0){
+        if(  item.getValue() == -1.00){
 
             /**set the alert*/
             alert.setAlertType(Alert.AlertType.WARNING);
@@ -129,14 +126,125 @@ public class HelloController implements Initializable {
             alert.show();
             throw valueExc;
         }
-        /**
-         *  what do I do here in case that the user types a non-numerical symbol on the value textfield?
-         * Also, if item.getName == "Invalid name" I need to display an error message
-         * Also, if item.getBarcode == "Invalid Serial Number !!" I need to display an error message)
-         * Also, if item.getBarcode already exists I need to display an error message)
-         * Also, if item.getValue == -1.0 I need to display an error message*/
+        /** Also, if item.getBarcode already exists I need to display an error message*/
+        for(int i = 0; i < list.size(); i++){
+
+            if( list.get(i).getSerialNumber().equals(item.getSerialNumber())){
+
+                /**set the alert*/
+                alert.setAlertType(Alert.AlertType.ERROR);
+                /**set the alert's message*/
+                alert.setContentText(serialNumExc2.getMessage());
+                /**show alert*/
+                alert.show();
+                throw serialNumExc2;
+
+            }
+
+        }/**the barcode is not in the list*/
 
         list.add(item);
+
+    }/**end add function*/
+
+    /**editButton code*/
+    public void editItem(ActionEvent ae){
+
+        /**get index of item in the list*/
+        int index = Inventory.getSelectionModel().getSelectedIndex();
+
+        /**remove item*/
+        list.remove(index);
+
+        /**add item in the same index*/
+        Item item = new Item(nameInput.getText(), serialNumberInput.getText(),  Double.parseDouble(valueInput.getText()));
+
+        list.add(index, item);
+
+
+    }/**end edit function*/
+
+    /**removeButton code*/
+    public void removeItem(ActionEvent ae){
+
+        list.remove(Inventory.getSelectionModel().getSelectedIndex());
     }
+
+    /**removeAllButton code*/
+    public void removeAllItems(ActionEvent ae){
+
+        list.remove(0, list.size());
+    }
+
+    /**helper function to save files*/
+    public void save(File file, String content) {
+
+        try{
+            FileWriter writer = new FileWriter(file);
+            writer.write(content);
+            writer.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**saveFile code*/
+    public void saveFileTSV(ActionEvent ae){
+
+        File file = fileChooser.showSaveDialog(new Stage());
+
+        if(file != null){
+
+            String content = "Serial Number\t\tName\t\tValue\n";
+
+            /**print items*/
+            for(int i = 0; i < list.size(); i++){
+
+                content = content + list.get(i).getSerialNumber() + "\t\t" + list.get(i).getName() + "\t\t" +
+                        list.get(i).getValue() + "\n";
+            }
+
+            save(file, content);
+        }
+    }
+
+    /**save as html*/
+
+    /**save as json*/
+
+    /**load File*/
+    public void loadFile(ActionEvent ae){
+
+        File file = fileChooser.showOpenDialog(new Stage());
+
+        try {
+            Scanner input = new Scanner(file);
+
+            String name;
+            String serialNumber;
+            double value;
+
+            /**skipping the title of the file*/
+            input.nextLine();
+
+            while(input.hasNext()){
+
+                serialNumber = input.next();
+                name = input.next();
+                value = Double.parseDouble(input.next());
+
+                Item item = new Item(name, serialNumber , value);
+
+                list.add(item);
+            }
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 }

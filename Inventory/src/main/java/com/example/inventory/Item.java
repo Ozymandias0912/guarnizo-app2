@@ -16,12 +16,22 @@ public class Item {
     /**private value*/
     private double value;
 
-    /**constructor:
+
+
+    /**constructors:
      Item()*/
     public Item(String name, String serialNumber, double value) {
         this.name = validateName(name);
         this.serialNumber = validateSerialNumber(serialNumber);
         this.value = validateValue(value);
+    }
+
+    public Item() {
+        this.name = "Xbox";
+
+        this.serialNumber = "A-Xbo-x4l-ife";
+
+        this.value = 500.00;
     }
 
     /**setters & getters*/
@@ -61,7 +71,7 @@ public class Item {
 
     /**validateSerialNumber()*/
     public String validateSerialNumber(String SerialNumber){
-        boolean check = false;
+        boolean check = true;
 
         if( SerialNumber.length() == 13  &&  SerialNumber.charAt(0) == 'A'  &&  SerialNumber.charAt(1) == '-'  &&
                 SerialNumber.charAt(5) == '-'  &&  SerialNumber.charAt(9) == '-'){
@@ -69,22 +79,22 @@ public class Item {
             /**checking indexes 2 through 4*/
             for(i = 2; i < 5; i++){
 
-                if( (isDigit(SerialNumber.charAt(i))  ||  isLetter(SerialNumber.charAt(i)))){
-                    check = true;
+                if( (!isDigit(SerialNumber.charAt(i))  &&  !isLetter(SerialNumber.charAt(i)))){
+                    check = false;
                 }
             }
             /**checking indexes 6 through 8*/
             for(i = 6; i < 9; i++){
 
-                if( (isDigit(SerialNumber.charAt(i))  ||  isLetter(SerialNumber.charAt(i)))){
-                    check = true;
+                if( (!isDigit(SerialNumber.charAt(i))  &&  !isLetter(SerialNumber.charAt(i)))){
+                    check = false;
                 }
             }
             /**checking indexes 10 through 12*/
             for(i = 10; i < 13; i++){
 
-                if( (isDigit(SerialNumber.charAt(i))  ||  isLetter(SerialNumber.charAt(i)))){
-                    check = true;
+                if( (!isDigit(SerialNumber.charAt(i))  &&  !isLetter(SerialNumber.charAt(i)))){
+                    check = false;
                 }
             }
             if(check){
@@ -105,8 +115,9 @@ public class Item {
         if( character >= '0' && character <= '9'){
             return true;
         }
-
-        return false;
+        else{
+            return false;
+        }
     }
     /**isLetter()*/
     /**This function will be used by validateSerialNumber()*/
@@ -115,14 +126,16 @@ public class Item {
         if( (character >= 'A' && character <= 'Z')  ||  (character >= 'a' && character <= 'z')) {
             return true;
         }
-
-        return false;
+        else{
+            return false;
+        }
     }
 
     /**validateValue()*/
     public double validateValue(double value){
 
         if( value >= 0.00 ){
+
             return value;
         }
         else{
