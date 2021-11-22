@@ -25,9 +25,6 @@ import java.util.Scanner;
 public class InventoryController implements Initializable {
 
     @FXML
-    private TextField search = new TextField();
-
-    @FXML
     private TextField serialNumberInput = new TextField();
 
     @FXML
@@ -241,7 +238,8 @@ public class InventoryController implements Initializable {
         }
     }
 
-    /**generate 1024 items*/
+    /**generate 1024 items
+     * it helped me generate a text file with 1024 items*/
     public void generate1024items(ActionEvent ae){
 
         for(int i = 0; i < 10; i++){
@@ -310,6 +308,8 @@ public class InventoryController implements Initializable {
         }
 
     }
+
+
 
 
 

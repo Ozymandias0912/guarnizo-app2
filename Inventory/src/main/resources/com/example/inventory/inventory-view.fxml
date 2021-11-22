@@ -33,13 +33,12 @@
                 <TableColumn fx:id="Value" prefWidth="102.14404296875" text="Value" />
             </columns>
         </TableView>
-        <TextField fx:id="search" layoutX="456.0" layoutY="71.0" promptText="Search" />
         <Button fx:id="AddButton" layoutX="539.0" layoutY="237.0" mnemonicParsing="false" onAction="#AddItem" text="Add Item" />
         <Button fx:id="RemoveButton" layoutX="518.0" layoutY="320.0" mnemonicParsing="false" onAction="#removeItem" text="Remove Item" />
         <Button fx:id="RemoveAllButton" layoutX="495.0" layoutY="368.0" mnemonicParsing="false" onAction="#removeAllItems" text="Remove All Items" />
         <Button fx:id="EditButton" layoutX="540.0" layoutY="275.0" mnemonicParsing="false" onAction="#editItem" text="Edit Item" />
-        <TextField fx:id="serialNumberInput" layoutX="456.0" layoutY="108.0" promptText="Serial #" />
-        <TextField fx:id="nameInput" layoutX="456.0" layoutY="143.0" promptText="Name" />
-        <TextField fx:id="valueInput" layoutX="456.0" layoutY="180.0" promptText="Value" />
+        <TextField fx:id="serialNumberInput" layoutX="456.0" layoutY="71.0" promptText="Serial #" />
+        <TextField fx:id="nameInput" layoutX="456.0" layoutY="107.0" promptText="Name" />
+        <TextField fx:id="valueInput" layoutX="456.0" layoutY="147.0" promptText="Value" />
     </children>
 </AnchorPane>
