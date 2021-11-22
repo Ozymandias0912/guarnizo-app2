@@ -34,7 +34,7 @@ javafx {
 
 dependencies {
     implementation('org.controlsfx:controlsfx:11.1.0')
-    implementation('net.synedra:validatorfx:0.1.13') {
+    implementation('net.synedra:validatorfx:0.1.14') {
         exclude(group: 'org.openjfx')
     }
 
@@ -49,6 +49,6 @@ run{
     System.in
 }
 application{
-    mainClass = "com.example.inventory.HelloApplication"
+    mainClass = "com.example.inventory.InventoryManagementApplication"
 }
 
